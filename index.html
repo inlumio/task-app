@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Notes App</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./src/scss/index.scss" />
+	</head>
+	<body>
+		<main class="max-w-7xl mx-auto p-4">
+			<table class="w-full">
+				<thead class="bg-slate-500">
+					<tr class="text-start">
+						<th class="px-4 py-2 bg-slate-500 text-transparent w-4">Icon</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Name</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Created</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Category</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Content</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Dates</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">
+							<label title="Show archived" class="toggle">
+								<input type="checkbox" name="" id="show-archived" />
+								<span></span>
+							</label>
+						</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">
+							<i class="bx bxs-archive-in"></i>
+						</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">
+							<i class="bx bxs-trash"></i>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="">
+						<td class="px-4 py-2 bg-slate-200">
+							<div class="rounded-full p-2 bg-slate-600 inline-flex">
+								<i class="bx bxs-shopping-bags text-white"></i>
+							</div>
+						</td>
+						<td class="px-4 py-2 bg-slate-200 text-black font-bold truncate">
+							Shopping list
+						</td>
+						<td
+							class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate"
+						>
+							April 27, 2021
+						</td>
+						<td
+							class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate"
+						>
+							Task
+						</td>
+						<td
+							class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate max-w-xs"
+						>
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere,
+							quidem minima iusto sed veniam incidunt repellat enim soluta iste
+							aliquid, cupiditate mollitia! Provident architecto fuga ullam
+							quaerat obcaecati, quidem harum.
+						</td>
+						<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal"></td>
+						<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal">
+							<i class="bx bxs-edit"></i>
+						</td>
+						<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal">
+							<i class="bx bxs-archive-in"></i>
+						</td>
+						<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal">
+							<i class="bx bxs-trash"></i>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="w-full">
+				<thead class="bg-slate-500">
+					<tr class="text-start">
+						<th class="px-4 py-2 bg-slate-500 text-transparent">Icon</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Note Category</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Active</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Archived</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="">
+						<td class="px-4 py-2 bg-slate-200 w-0">
+							<div class="rounded-full p-2 bg-slate-600 inline-flex">
+								<i class="bx bxs-shopping-bags text-white"></i>
+							</div>
+						</td>
+						<td class="px-4 py-2 bg-slate-200 text-black font-bold truncate">
+							Shopping list
+						</td>
+						<td class="px-4 py-2 bg-slate-200 text-black truncate">5</td>
+						<td class="px-4 py-2 bg-slate-200 text-black truncate">10</td>
+					</tr>
+				</tbody>
+			</table>
+		</main>
+		<script type="module" src="./src/js/main.js"></script>
+	</body>
+</html>

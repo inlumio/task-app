@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	font-family: 'Jost', sans-serif;
+}
+
+body {
+}
+
+.wrapper {
+	@apply max-w-7xl mx-auto p-4;
+}
+table {
+	@apply border-separate border-spacing-y-2;
+}
+
+i {
+	@apply text-xl;
+}
+th {
+	@apply text-start;
+}
+
+tr {
+}
+
+:where(td, th):first-child {
+	@apply rounded-s-md;
+}
+:where(td, th):last-child {
+	@apply rounded-e-md;
+}
+
+.toggle {
+	@apply block relative w-8 h-5 bg-slate-200 rounded-full p-0.5;
+
+	$parent: &;
+
+	input {
+		appearance: none;
+		position: absolute;
+	}
+
+	span {
+		@apply w-4 bg-slate-700 aspect-square rounded-full absolute left-0.5;
+		transition: left 0.25s ease-in-out;
+	}
+
+	input:checked + span {
+		@apply left-3.5;
+	}
+}
