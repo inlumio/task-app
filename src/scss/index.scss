@@ -46,3 +46,44 @@ tr {
 		@apply left-3.5;
 	}
 }
+
+button {
+	@apply px-6 py-2 rounded-lg font-bold transition-colors;
+}
+
+dialog {
+	@apply max-w-lg w-full bg-slate-500 p-6 rounded-lg;
+
+	form {
+		@apply flex flex-col gap-4;
+
+		label {
+			@apply flex flex-col gap-1;
+
+			span {
+				@apply text-white;
+			}
+		}
+
+		input {
+			@apply px-4 py-2  rounded-md;
+		}
+
+		textarea {
+			@apply resize-none block w-full px-4 py-2 rounded-md;
+		}
+
+		select,
+		option {
+			@apply px-4 py-2 rounded-md;
+		}
+
+		button {
+			@apply border-4 border-solid border-white text-white hover:bg-white hover:text-slate-500 ml-auto;
+
+			&:first-child {
+				@apply mr-2;
+			}
+		}
+	}
+}

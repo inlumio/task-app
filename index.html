@@ -86,7 +86,7 @@
 					</tbody>
 				</table>
 				<button
-					class="create-btn px-4 py-2 bg-slate-500 rounded-lg font-bold text-white ml-auto block hover:bg-slate-700 transition-colors"
+					class="create-btn ml-auto block text-white bg-slate-500 hover:bg-slate-700"
 				>
 					Create Note
 				</button>
@@ -116,6 +116,36 @@
 					</tr>
 				</tbody>
 			</table>
+			<dialog class="modal">
+				<form>
+					<label class="">
+						<span>Note Name</span>
+						<input
+							type="text"
+							placeholder="Type name here"
+							name="name"
+							class=""
+						/>
+					</label>
+					<label>
+						<span>Category</span>
+						<select>
+							<option value="task">Task</option>
+							<option value="random-thougths">Random thoughts</option>
+							<option value="quote">Quote</option>
+							<option value="idea">Idea</option>
+						</select>
+					</label>
+					<label>
+						<span>Content</span>
+						<textarea name="content" rows="5"></textarea>
+					</label>
+					<div>
+						<button class="">Add</button>
+						<button class="">Close</button>
+					</div>
+				</form>
+			</dialog>
 		</main>
 		<script type="module" src="./src/js/main.js"></script>
 	</body>
