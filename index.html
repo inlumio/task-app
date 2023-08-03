@@ -117,19 +117,22 @@
 				</tbody>
 			</table>
 			<dialog class="modal">
+				<h2 class="text-2xl text-white font-bold text-center mb-4">Add task</h2>
 				<form>
 					<label class="">
-						<span>Note Name</span>
+						<h4>Note Name</h4>
 						<input
 							type="text"
 							placeholder="Type name here"
 							name="name"
-							class=""
+							aria-errormessage="name-err"
+							aria-invalid="false"
 						/>
+						<span id="name-err" class="err-msg">Enter the name</span>
 					</label>
 					<label>
-						<span>Category</span>
-						<select>
+						<h4>Category</h4>
+						<select name="categoty">
 							<option value="task">Task</option>
 							<option value="random-thougths">Random thoughts</option>
 							<option value="quote">Quote</option>
@@ -137,13 +140,20 @@
 						</select>
 					</label>
 					<label>
-						<span>Content</span>
-						<textarea name="content" rows="5"></textarea>
+						<h4>Content</h4>
+						<textarea
+							name="content"
+							rows="5"
+							aria-invalid="false"
+							aria-errormessage="content-err"
+						></textarea>
+						<span id="content-err" class="err-msg">At least 10 symbols</span>
 					</label>
-					<div>
-						<button class="">Add</button>
-						<button class="">Close</button>
-					</div>
+					<menu class="flex justify-start gap-2">
+						<button type="reset">Reset</button>
+						<button type="button">Close</button>
+						<button type="submit" class="ml-auto">Confirm</button>
+					</menu>
 				</form>
 			</dialog>
 		</main>
