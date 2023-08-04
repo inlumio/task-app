@@ -24,7 +24,6 @@ let notes = [
 		created: '2021/3/27',
 		category: Categories.Idea,
 		content: 'Implement new feature on 3/5/2021 and 5/5/2021',
-		dates: ['3/5/2021', '5/5/2021'],
 		archived: false,
 	},
 	{
@@ -40,7 +39,7 @@ let notes = [
 		name: 'Books',
 		created: '2021/4/6',
 		category: Categories.Task,
-		content: 'Buy "The Lord of the Rings" on sale 2021/4/10',
+		content: 'Buy "The Lord of the Rings" on sale 4/10/2021',
 		archived: false,
 	},
 	{
