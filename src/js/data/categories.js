@@ -9,11 +9,11 @@ const Categories = Object.freeze({
 	},
 	Idea: {
 		name: 'Idea',
-		icon: 'bx bx-lightning-charge',
+		icon: 'bx bx-bulb',
 	},
 	Quote: {
 		name: 'Quote',
-		icon: 'bx bx-quote-alt-left',
+		icon: 'bx bxs-quote-alt-right',
 	},
 });
 

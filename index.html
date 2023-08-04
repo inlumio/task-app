@@ -22,22 +22,26 @@
 				<table class="w-full note-table">
 					<thead class="bg-slate-500">
 						<tr class="text-start">
-							<th class="px-4 py-2 bg-slate-500 text-transparent w-4">Icon</th>
+							<th
+								class="px-4 py-2 bg-slate-500 text-transparent w-4 select-none"
+							>
+								Icon
+							</th>
 							<th class="px-4 py-2 bg-slate-500 text-white">Name</th>
 							<th class="px-4 py-2 bg-slate-500 text-white">Created</th>
 							<th class="px-4 py-2 bg-slate-500 text-white">Category</th>
 							<th class="px-4 py-2 bg-slate-500 text-white">Content</th>
 							<th class="px-4 py-2 bg-slate-500 text-white">Dates</th>
 							<th class="px-4 py-2 bg-slate-500 text-white">
-								<label title="Show archived" class="toggle">
+								<label title="Show archived" class="toggle cursor-pointer">
 									<input type="checkbox" name="" id="show-archived" />
 									<span></span>
 								</label>
 							</th>
-							<th class="px-4 py-2 bg-slate-500 text-white">
+							<th class="px-4 py-2 bg-slate-500 text-white cursor-pointer">
 								<i class="bx bxs-archive-in"></i>
 							</th>
-							<th class="px-4 py-2 bg-slate-500 text-white">
+							<th class="px-4 py-2 bg-slate-500 text-white cursor-pointer">
 								<i class="bx bxs-trash"></i>
 							</th>
 						</tr>
@@ -53,7 +57,7 @@
 
 			<table class="w-full summary-table">
 				<thead class="bg-slate-500">
-					<tr class="text-start">
+					<tr class="text-start select-none">
 						<th class="px-4 py-2 bg-slate-500 text-transparent">Icon</th>
 						<th class="px-4 py-2 bg-slate-500 text-white">Note Category</th>
 						<th class="px-4 py-2 bg-slate-500 text-white">Active</th>
@@ -91,11 +95,11 @@
 					</label>
 					<label>
 						<h4>Category</h4>
-						<select name="categoty">
-							<option value="task">Task</option>
-							<option value="random-thougths">Random thoughts</option>
-							<option value="quote">Quote</option>
-							<option value="idea">Idea</option>
+						<select name="category">
+							<option value="Task">Task</option>
+							<option value="Random Thought">Random thoughts</option>
+							<option value="Quote">Quote</option>
+							<option value="Idea">Idea</option>
 						</select>
 					</label>
 					<label>
@@ -109,9 +113,9 @@
 						<span id="content-err" class="err-msg">At least 10 symbols</span>
 					</label>
 					<menu class="flex justify-start gap-2">
-						<button type="reset">Reset</button>
-						<button type="button">Close</button>
-						<button type="submit" class="ml-auto">Confirm</button>
+						<button type="reset" data-reset>Reset</button>
+						<button type="submit" formmethod="dialog" data-close>Close</button>
+						<button type="submit" data-submit class="ml-auto">Confirm</button>
 					</menu>
 				</form>
 			</dialog>
