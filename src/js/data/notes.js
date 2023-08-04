@@ -7,7 +7,6 @@ let notes = [
 		created: '2021/3/20',
 		category: Categories.Task,
 		content: 'Tomatoes, bread',
-		dates: [],
 		archived: false,
 	},
 	{
@@ -17,7 +16,6 @@ let notes = [
 		category: Categories.RandomThought,
 		content:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem',
-		dates: [],
 		archived: false,
 	},
 	{
@@ -35,7 +33,6 @@ let notes = [
 		created: '2021/4/2',
 		category: Categories.Quote,
 		content: 'To be or not to be',
-		dates: [],
 		archived: false,
 	},
 	{
@@ -44,7 +41,6 @@ let notes = [
 		created: '2021/4/6',
 		category: Categories.Task,
 		content: 'Buy "The Lord of the Rings" on sale 2021/4/10',
-		dates: [],
 		archived: false,
 	},
 	{
@@ -53,7 +49,6 @@ let notes = [
 		created: '2021/4/21',
 		category: Categories.RandomThought,
 		content: 'Because it is',
-		dates: [],
 		archived: false,
 	},
 	{
@@ -62,7 +57,6 @@ let notes = [
 		created: '2021/5/4',
 		category: Categories.Quote,
 		content: 'Be yourself; everyone else is already taken.',
-		dates: [],
 		archived: false,
 	},
 ];
