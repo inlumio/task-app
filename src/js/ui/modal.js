@@ -7,6 +7,8 @@ const nameField = document.querySelector('input[name="name"]');
 const contentField = document.querySelector('textarea[name="content"]');
 const categoryField = document.querySelector('select[name="category"]');
 
+let lastNote = null;
+
 modal.addEventListener('click', (e) => {
 	const dialogDimensions = modal.getBoundingClientRect();
 	if (
@@ -19,23 +21,25 @@ modal.addEventListener('click', (e) => {
 	}
 });
 
+closeModalBtn.addEventListener('click', () => modal.close());
+resetFormBtn.addEventListener('click', () =>
+	lastNote ? setFormFields(lastNote) : modalForm.reset()
+);
+
+const setFieldsValidation = (nameValid, contentValid) => {
+	nameField.setAttribute('aria-invalid', !nameValid);
+	contentField.setAttribute('aria-invalid', !contentValid);
+};
+
 modalForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	let invalid = false;
-	if (!nameField.value) {
-		nameField.setAttribute('aria-invalid', 'true');
-		invalid = true;
-	} else {
-		nameField.setAttribute('aria-invalid', 'false');
-	}
-	if (contentField.value.length < 10) {
-		contentField.setAttribute('aria-invalid', 'true');
-		invalid = true;
-	} else {
-		contentField.setAttribute('aria-invalid', 'false');
-	}
 
-	if (invalid) return;
+	const nameCheck = nameField.value.length > 0;
+	const contentCheck = contentField.value.length > 10;
+
+	setFieldsValidation(nameCheck, contentCheck);
+
+	if (!(nameCheck && contentCheck)) return;
 
 	modal.close();
 	modalForm.reset();
@@ -48,13 +52,21 @@ const setFormFields = ({ name, content, category }) => {
 };
 
 const openCreateModal = () => {
+	setFieldsValidation(true, true);
+	if (lastNote) {
+		modalForm.reset();
+		lastNote = null;
+	}
 	modal.showModal();
 };
 
 const openEditModal = (editedNote) => {
-	modal.showModal();
-
+	if (lastNote !== editedNote) {
+		setFieldsValidation(true, true);
+		lastNote = editedNote;
+	}
 	setFormFields(editedNote);
+	modal.showModal();
 };
 
 export { openCreateModal, openEditModal };
