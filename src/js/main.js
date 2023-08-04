@@ -10,6 +10,8 @@ const resetFormBtn = modal.querySelector('button[type=reset]');
 const nameField = document.querySelector('input[name="name"]');
 const contentField = document.querySelector('textarea[name="content"]');
 const categoryField = document.querySelector('select[name="category"]');
+const notesTable = document.querySelector('.note-table');
+const summaryTable = document.querySelector('.summary-table');
 
 modal.addEventListener('click', (e) => {
 	const dialogDimensions = modal.getBoundingClientRect();
@@ -24,24 +26,32 @@ modal.addEventListener('click', (e) => {
 
 	if (e.target === submitModalBtn) {
 		e.preventDefault();
+		let invalid = false;
 		if (!nameField.value) {
 			nameField.setAttribute('aria-invalid', 'true');
-			return;
+			invalid = true;
 		} else {
 			nameField.setAttribute('aria-invalid', 'false');
 		}
 		if (contentField.value.length < 10) {
 			contentField.setAttribute('aria-invalid', 'true');
-			return;
+			invalid = true;
 		} else {
 			contentField.setAttribute('aria-invalid', 'false');
 		}
 
+		if (invalid) return;
+
 		modal.close();
 		modalForm.reset();
 	}
+
 	if (e.target === closeModalBtn) {
 		modal.close();
+	}
+
+	if (e.target === resetFormBtn) {
+		modalForm.reset();
 	}
 });
 
