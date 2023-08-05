@@ -1,20 +1,15 @@
 const Categories = Object.freeze({
-	Task: {
-		name: 'Task',
-		icon: 'bx bx-task',
-	},
-	RandomThought: {
-		name: 'Random Thought',
-		icon: 'bx bx-chat',
-	},
-	Idea: {
-		name: 'Idea',
-		icon: 'bx bx-bulb',
-	},
-	Quote: {
-		name: 'Quote',
-		icon: 'bx bxs-quote-alt-right',
-	},
+	Task: 'Task',
+	RandomThought: 'Random Thought',
+	Idea: 'Idea',
+	Quote: 'Quote',
 });
 
-export { Categories };
+const Icons = Object.freeze({
+	[Categories.Task]: 'bx bx-task',
+	[Categories.RandomThought]: 'bx bx-chat',
+	[Categories.Idea]: 'bx bx-bulb',
+	[Categories.Quote]: 'bx bxs-quote-alt-right',
+});
+
+export { Categories, Icons };

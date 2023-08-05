@@ -48,7 +48,7 @@ let notes = [
 		created: '2021/4/21',
 		category: Categories.RandomThought,
 		content: 'Because it is',
-		archived: false,
+		archived: true,
 	},
 	{
 		id: 7,

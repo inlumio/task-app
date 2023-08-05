@@ -1,4 +1,4 @@
-import { Categories } from '../data/categories';
+import { Categories, Icons } from '../data/categories';
 
 const notesTable = document.querySelector('.note-table');
 const notesTableBody = notesTable.querySelector('tbody');
@@ -42,7 +42,7 @@ const renderNotes = (notes) => {
 		<tr data-note-id="${note.id}">
 							<td class="px-4 py-2 bg-slate-200">
 								<div class="rounded-full p-2 bg-slate-600 inline-flex">
-									<i class="${note.category.icon} text-white"></i>
+									<i class="${Icons[note.category]} text-white"></i>
 								</div>
 							</td>
 							<td class="px-4 py-2 bg-slate-200 text-black font-bold truncate">
@@ -56,7 +56,7 @@ const renderNotes = (notes) => {
 							<td
 								class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate"
 							>
-								${note.category.name}
+								${note.category}
 							</td>
 							<td
 								class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate max-w-xs"
@@ -82,7 +82,25 @@ const renderNotes = (notes) => {
 	});
 };
 
-const renderSummary = () => {};
+const renderSummary = (summaryData) => {
+	summaryTableBody.innerHTML = '';
+	summaryData.forEach((category) => {
+		summaryTableBody.innerHTML += `
+			<tr class=''>
+				<td class='px-4 py-2 bg-slate-200 w-0'>
+					<div class='rounded-full p-2 bg-slate-600 inline-flex'>
+						<i class='${Icons[category.categoryName]} text-white'></i>
+					</div>
+				</td>
+				<td class='px-4 py-2 bg-slate-200 text-black font-bold truncate'>
+					${category.categoryName}
+				</td>
+				<td class='px-4 py-2 bg-slate-200 text-black truncate'>${category.active}</td>
+				<td class='px-4 py-2 bg-slate-200 text-black truncate'>${category.archived}</td>
+			</tr>
+			`;
+	});
+};
 
 notesTable.addEventListener('click', (e) => {
 	const role = e.target.closest('[data-role]')?.dataset.role;
@@ -96,4 +114,4 @@ notesTable.addEventListener('click', (e) => {
 	}
 });
 
-export { renderNotes, setTableHandlers };
+export { renderNotes, renderSummary, setTableHandlers };
