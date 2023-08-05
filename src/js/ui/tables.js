@@ -50,12 +50,12 @@ const renderNotes = (notes) => {
 	notes.forEach((note) => {
 		notesTableBody.innerHTML += `
 		<tr data-note-id="${note.id}">
-							<td class="px-4 py-2 bg-slate-200">
+							<td class="px-4 py-2 bg-slate-200 w-10">
 								<div class="rounded-full p-2 bg-slate-600 inline-flex">
 									<i class="${Icons[note.category]} text-white"></i>
 								</div>
 							</td>
-							<td class="px-4 py-2 bg-slate-200 text-black font-bold truncate">
+							<td class="px-4 py-2 bg-slate-200 text-black font-bold">
 								${note.name}
 							</td>
 							<td
@@ -64,12 +64,12 @@ const renderNotes = (notes) => {
 							${note.created}
 							</td>
 							<td
-								class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate"
+								class="px-4 py-2 bg-slate-200 text-slate-600 font-normal"
 							>
 							${note.category}
 							</td>
 							<td
-							class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate max-w-xs"
+							class="px-4 py-2 bg-slate-200 text-slate-600 font-normal "
 							>
 								${note.content}
 							</td>
