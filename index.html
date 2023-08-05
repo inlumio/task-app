@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Notes App</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		
+		<script type="module" crossorigin src="/task-app/assets/index-3defdbf5.js"></script>
+		<link rel="stylesheet" href="/task-app/assets/index-0ea5a7ee.css">
+	</head>
+	<body>
+		<main class="max-w-7xl mx-auto p-4">
+			<section class="mb-10">
+				<table class="w-full note-table">
+					<colgroup>
+						<col span="1" style="width: max-content" />
+						<col span="1" style="width: 15%" />
+						<col span="1" style="width: 10%" />
+						<col span="1" style="width: 15%" />
+						<col span="1" style="min-width: 0; width: 100%" />
+						<col span="1" style="min-width: 100px" />
+						<col span="1" style="width: min-content" />
+						<col span="1" style="width: min-content" />
+						<col span="1" style="width: min-content" />
+					</colgroup>
+					<thead class="bg-slate-500">
+						<tr class="text-start">
+							<th class="px-4 py-2 bg-slate-500 text-transparent select-none">
+								Icon
+							</th>
+							<th class="px-4 py-2 bg-slate-500 text-white min-w-0">Name</th>
+							<th class="px-4 py-2 bg-slate-500 text-white min-w-0">Created</th>
+							<th class="px-4 py-2 bg-slate-500 text-white min-w-0">
+								Category
+							</th>
+							<th class="px-4 py-2 bg-slate-500 text-white min-w-0">Content</th>
+							<th class="px-4 py-2 bg-slate-500 text-white min-w-0">Dates</th>
+							<th class="px-4 py-2 bg-slate-500 text-white">
+								<label title="Show archived" class="toggle cursor-pointer">
+									<input type="checkbox" name="" id="show-archived" />
+									<span></span>
+								</label>
+							</th>
+							<th
+								class="px-4 py-2 bg-slate-500 text-white cursor-pointer"
+								data-action="archive all"
+							>
+								<i class="bx bxs-archive-in"></i>
+							</th>
+							<th
+								class="px-4 py-2 bg-slate-500 text-white cursor-pointer"
+								data-action="delete all"
+							>
+								<i class="bx bxs-trash"></i>
+							</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<button
+					class="create-btn ml-auto block text-white bg-slate-500 hover:bg-slate-700"
+				>
+					Create Note
+				</button>
+			</section>
+
+			<table class="w-full summary-table">
+				<thead class="bg-slate-500">
+					<tr class="text-start select-none">
+						<th class="px-4 py-2 bg-slate-500 text-transparent">Icon</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Note Category</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Active</th>
+						<th class="px-4 py-2 bg-slate-500 text-white">Archived</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<dialog class="modal">
+				<h2 class="text-2xl text-white font-bold text-center mb-4">Add task</h2>
+				<form>
+					<label class="">
+						<h4>Note Name</h4>
+						<input
+							type="text"
+							placeholder="Type name here"
+							name="name"
+							aria-errormessage="name-err"
+							aria-invalid="false"
+						/>
+						<span id="name-err" class="err-msg">Enter the name</span>
+					</label>
+					<label>
+						<h4>Category</h4>
+						<select name="category">
+							<option value="Task">Task</option>
+							<option value="Random Thought">Random thoughts</option>
+							<option value="Quote">Quote</option>
+							<option value="Idea">Idea</option>
+						</select>
+					</label>
+					<label>
+						<h4>Content</h4>
+						<textarea
+							name="content"
+							rows="5"
+							aria-invalid="false"
+							aria-errormessage="content-err"
+						></textarea>
+						<span id="content-err" class="err-msg">At least 10 symbols</span>
+					</label>
+					<menu class="flex justify-start gap-2">
+						<button type="button" data-reset>Reset</button>
+						<button type="button" data-close>Close</button>
+						<button type="submit" data-submit class="ml-auto">Confirm</button>
+					</menu>
+				</form>
+			</dialog>
+		</main>
+		
+	</body>
+</html>
