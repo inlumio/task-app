@@ -78,13 +78,13 @@ const renderNotes = (notes) => {
 							>
 								${note.dates.join(', ')}
 							</td>
-							<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal cursor-pointer" data-role='edit'>
+							<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal cursor-pointer" data-action='edit'>
 								<i class="bx bxs-edit"></i>
 							</td>
-							<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal cursor-pointer" data-role='archive'>
+							<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal cursor-pointer" data-action='archive'>
 								<i class="bx bxs-archive-in"></i>
 							</td>
-							<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal cursor-pointer" data-role='delete'>
+							<td class="px-4 py-2 bg-slate-200 text-slate-600 font-normal cursor-pointer" data-action='delete'>
 								<i class="bx bxs-trash"></i>
 							</td>
 						</tr>
@@ -113,10 +113,10 @@ const renderSummary = (summaryData) => {
 };
 
 notesTable?.addEventListener('click', (e) => {
-	const role = e.target.closest('[data-role]')?.dataset.role;
+	const action = e.target.closest('[data-action]')?.dataset.action;
 	const noteId = parseInt(e.target.closest('[data-note-id')?.dataset.noteId);
 
-	switch (role) {
+	switch (action) {
 		case 'edit':
 			editNoteHandler(noteId);
 			break;
@@ -125,6 +125,12 @@ notesTable?.addEventListener('click', (e) => {
 			break;
 		case 'delete':
 			deleteNoteHandler(noteId);
+			break;
+		case 'delete all':
+			deleteAllHandler();
+			break;
+		case 'archive all':
+			archiveAllHandler();
 			break;
 	}
 });

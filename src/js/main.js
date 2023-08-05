@@ -41,7 +41,6 @@ const editHandler = (id) => {
 
 const addHandler = () => {
 	performAddModal((newNoteData) => {
-		console.log(newNoteData);
 		let created = new Intl.DateTimeFormat('en-US').format(new Date());
 		let newNote = {
 			...newNoteData,
@@ -68,10 +67,17 @@ const archiveAllHandler = () => {
 	const displayedNotes = notes.filter(
 		(note) => note.archived === getTogglerValue()
 	);
-	console.log(displayedNotes);
+	displayedNotes.forEach((note) => toggleArchiveNote(note.id));
+	updateUI();
 };
 
-const deleteAllHandler = () => {};
+const deleteAllHandler = () => {
+	const displayedNotes = notes.filter(
+		(note) => note.archived === getTogglerValue()
+	);
+	displayedNotes.forEach((note) => deleteNote(note.id));
+	updateUI();
+};
 
 const togglerChangeHandler = () => updateUI();
 
