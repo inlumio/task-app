@@ -2,4 +2,4 @@
 
 ## Live preview
 
-[Github Pages](https://inlumio.github.io/notes-app/)
+[Github Pages](https://inlumio.github.io/task-app/)
