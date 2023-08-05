@@ -1,3 +1,5 @@
 import path from 'path';
 
-export default {};
+export default {
+	base: '/task-app/',
+};
