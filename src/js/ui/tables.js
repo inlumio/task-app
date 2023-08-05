@@ -1,4 +1,5 @@
 import { Icons } from '../data/categories';
+import { formatDate } from '../utills/formatOutDate';
 
 const notesTable = document.querySelector('.note-table');
 const notesTableBody = notesTable.querySelector('tbody');
@@ -61,7 +62,7 @@ const renderNotes = (notes) => {
 							<td
 							class="px-4 py-2 bg-slate-200 text-slate-600 font-normal truncate"
 							>
-							${note.created}
+							${formatDate(note.created)}
 							</td>
 							<td
 								class="px-4 py-2 bg-slate-200 text-slate-600 font-normal"
