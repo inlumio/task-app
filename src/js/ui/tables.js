@@ -109,12 +109,17 @@ const renderSummary = (summaryData) => {
 notesTable.addEventListener('click', (e) => {
 	const role = e.target.closest('[data-role]')?.dataset.role;
 	const noteId = parseInt(e.target.closest('[data-note-id')?.dataset.noteId);
-	if (role === 'edit') {
-		editNoteHandler(noteId);
-	} else if (role === 'archive') {
-		archiveNoteHandler(noteId);
-	} else if (role === 'delete') {
-		deleteNoteHandler(noteId);
+
+	switch (role) {
+		case 'edit':
+			editNoteHandler(noteId);
+			break;
+		case 'archive':
+			archiveNoteHandler(noteId);
+			break;
+		case 'delete':
+			deleteNoteHandler(noteId);
+			break;
 	}
 });
 

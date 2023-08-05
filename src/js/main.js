@@ -31,7 +31,6 @@ const addHandler = () => {
 	performAddModal((newNoteData) => {
 		console.log(newNoteData);
 		let created = new Intl.DateTimeFormat('en-US').format(new Date());
-		const { name, content, category } = newNoteData;
 		let newNote = {
 			...newNoteData,
 			created,
@@ -43,9 +42,15 @@ const addHandler = () => {
 	});
 };
 
-const deleteHandler = (id) => {};
+const deleteHandler = (id) => {
+	deleteNote(id);
+	updateUI();
+};
 
-const archiveHandler = (id) => {};
+const archiveHandler = (id) => {
+	toggleArchiveNote(id);
+	updateUI();
+};
 
 const archiveAllHandler = () => {};
 
