@@ -5,14 +5,26 @@ import {
 	toggleArchiveNote,
 	deleteNote,
 } from './data/notes';
-import { renderNotes, renderSummary, setTableHandlers } from './ui/tables';
+import {
+	renderNotes,
+	renderSummary,
+	setTableHandlers,
+	getTogglerValue,
+} from './ui/tables';
 import { performAddModal, performEditModal } from './ui/modal';
 import { findDatesInString } from './utills/findDatesInString';
 import { countNotesByCategory } from './utills/countNotesCategories';
 
 const updateUI = () => {
+	const typedNotes = notes.filter(
+		(note) => note.archived === getTogglerValue()
+	);
+
 	renderNotes(
-		notes.map((note) => ({ ...note, dates: findDatesInString(note.content) }))
+		typedNotes.map((note) => ({
+			...note,
+			dates: findDatesInString(note.content),
+		}))
 	);
 
 	renderSummary(countNotesByCategory(notes));
@@ -52,9 +64,16 @@ const archiveHandler = (id) => {
 	updateUI();
 };
 
-const archiveAllHandler = () => {};
+const archiveAllHandler = () => {
+	const displayedNotes = notes.filter(
+		(note) => note.archived === getTogglerValue()
+	);
+	console.log(displayedNotes);
+};
 
 const deleteAllHandler = () => {};
+
+const togglerChangeHandler = () => updateUI();
 
 setTableHandlers(
 	addHandler,
@@ -62,7 +81,8 @@ setTableHandlers(
 	deleteHandler,
 	archiveHandler,
 	deleteAllHandler,
-	archiveAllHandler
+	archiveAllHandler,
+	togglerChangeHandler
 );
 
 updateUI();

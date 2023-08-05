@@ -5,6 +5,7 @@ const notesTableBody = notesTable.querySelector('tbody');
 const summaryTable = document.querySelector('.summary-table');
 const summaryTableBody = summaryTable.querySelector('tbody');
 const createBtn = document.querySelector('.create-btn');
+const typeToggler = notesTable?.querySelector('#show-archived');
 
 let addNoteHandler = null;
 let editNoteHandler = null;
@@ -12,6 +13,7 @@ let deleteNoteHandler = null;
 let deleteAllHandler = null;
 let archiveNoteHandler = null;
 let archiveAllHandler = null;
+let typeChangeHandler = null;
 
 const setTableHandlers = (
 	addNote,
@@ -19,7 +21,8 @@ const setTableHandlers = (
 	deleteNote,
 	archiveNote,
 	deleteAll,
-	archiveAll
+	archiveAll,
+	toggleArchivedShow
 ) => {
 	addNoteHandler = addNote;
 	editNoteHandler = editNote;
@@ -27,7 +30,10 @@ const setTableHandlers = (
 	archiveNoteHandler = archiveNote;
 	deleteAllHandler = deleteAll;
 	archiveAllHandler = archiveAll;
+	typeChangeHandler = toggleArchivedShow;
 };
+
+const getTogglerValue = () => typeToggler?.checked;
 
 const renderNotes = (notes) => {
 	notesTableBody.innerHTML = '';
@@ -106,7 +112,7 @@ const renderSummary = (summaryData) => {
 	});
 };
 
-notesTable.addEventListener('click', (e) => {
+notesTable?.addEventListener('click', (e) => {
 	const role = e.target.closest('[data-role]')?.dataset.role;
 	const noteId = parseInt(e.target.closest('[data-note-id')?.dataset.noteId);
 
@@ -124,5 +130,8 @@ notesTable.addEventListener('click', (e) => {
 });
 
 createBtn.addEventListener('click', (e) => addNoteHandler());
+typeToggler?.addEventListener('click', (e) => {
+	typeChangeHandler();
+});
 
-export { renderNotes, renderSummary, setTableHandlers };
+export { renderNotes, renderSummary, setTableHandlers, getTogglerValue };
