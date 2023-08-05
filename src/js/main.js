@@ -1,20 +1,30 @@
 import { notes, setNotes } from './data/notes';
-import { renderNotes, setTableHandlers } from './ui/tables';
+import { renderNotes, renderSummary, setTableHandlers } from './ui/tables';
 import { openCreateModal, openEditModal } from './ui/modal';
-import { Categories } from './data/categories';
+import { findDatesInString } from './utills/findDatesInString';
+import { countNotesByCategory } from './utills/countNotesCategories';
 
-const createBtn = document.querySelector('.create-btn');
+const updateUI = () => {
+	renderNotes(
+		notes.map((note) => ({ ...note, dates: findDatesInString(note.content) }))
+	);
 
-createBtn.addEventListener('click', () => {
-	openCreateModal();
-});
+	let summary = countNotesByCategory(notes);
+	renderSummary(summary);
+};
 
 const editHandler = (id) => {
 	let editedNote = notes.find((note) => note.id === id);
-	openEditModal(editedNote);
+	openEditModal(editedNote, (editedNoteData) => {
+		console.log(editedNoteData);
+	});
 };
 
-const addHandler = (note) => {};
+const addHandler = () => {
+	openCreateModal((newNoteData) => {
+		console.log(newNoteData);
+	});
+};
 
 const deleteHandler = (id) => {};
 
@@ -25,6 +35,7 @@ const archiveAllHandler = () => {};
 const deleteAllHandler = () => {};
 
 setTableHandlers(
+	addHandler,
 	editHandler,
 	deleteHandler,
 	archiveHandler,
@@ -32,4 +43,4 @@ setTableHandlers(
 	archiveAllHandler
 );
 
-renderNotes(notes);
+updateUI();

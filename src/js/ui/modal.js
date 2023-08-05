@@ -8,6 +8,7 @@ const contentField = document.querySelector('textarea[name="content"]');
 const categoryField = document.querySelector('select[name="category"]');
 
 let lastNote = null;
+let modalAction = null;
 
 modal.addEventListener('click', (e) => {
 	const dialogDimensions = modal.getBoundingClientRect();
@@ -22,6 +23,7 @@ modal.addEventListener('click', (e) => {
 });
 
 closeModalBtn.addEventListener('click', () => modal.close());
+
 resetFormBtn.addEventListener('click', () =>
 	lastNote ? setFormFields(lastNote) : modalForm.reset()
 );
@@ -41,31 +43,41 @@ modalForm.addEventListener('submit', (e) => {
 
 	if (!(nameCheck && contentCheck)) return;
 
+	if (modalAction)
+		modalAction({
+			name: nameField.value,
+			content: contentField.value,
+			category: categoryField.value,
+		});
 	modal.close();
 	modalForm.reset();
+	lastNote = null;
+	modalAction = null;
 });
 
 const setFormFields = ({ name, content, category }) => {
 	nameField.value = name;
 	contentField.value = content;
-	categoryField.value = category.name;
+	categoryField.value = category;
 };
 
-const openCreateModal = () => {
+const openCreateModal = (createHandler) => {
 	setFieldsValidation(true, true);
 	if (lastNote) {
 		modalForm.reset();
 		lastNote = null;
 	}
+	modalAction = createHandler;
 	modal.showModal();
 };
 
-const openEditModal = (editedNote) => {
+const openEditModal = (editedNote, editHandler) => {
+	setFormFields(editedNote);
 	if (lastNote !== editedNote) {
 		setFieldsValidation(true, true);
 		lastNote = editedNote;
 	}
-	setFormFields(editedNote);
+	modalAction = editHandler;
 	modal.showModal();
 };
 
