@@ -61,7 +61,7 @@ const setFormFields = ({ name, content, category }) => {
 	categoryField.value = category;
 };
 
-const openCreateModal = (createHandler) => {
+const performAddModal = (createHandler) => {
 	setFieldsValidation(true, true);
 	if (lastNote) {
 		modalForm.reset();
@@ -71,7 +71,7 @@ const openCreateModal = (createHandler) => {
 	modal.showModal();
 };
 
-const openEditModal = (editedNote, editHandler) => {
+const performEditModal = (editedNote, editHandler) => {
 	setFormFields(editedNote);
 	if (lastNote !== editedNote) {
 		setFieldsValidation(true, true);
@@ -81,4 +81,4 @@ const openEditModal = (editedNote, editHandler) => {
 	modal.showModal();
 };
 
-export { openCreateModal, openEditModal };
+export { performAddModal, performEditModal };

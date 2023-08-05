@@ -82,4 +82,4 @@ const updateNote = (updatedNote) => {
 	notes[index] = updatedNote;
 };
 
-export { notes, setNotes };
+export { notes, setNotes, updateNote, addNote, toggleArchiveNote, deleteNote };

@@ -1,6 +1,12 @@
-import { notes, setNotes } from './data/notes';
+import {
+	notes,
+	updateNote,
+	addNote,
+	toggleArchiveNote,
+	deleteNote,
+} from './data/notes';
 import { renderNotes, renderSummary, setTableHandlers } from './ui/tables';
-import { openCreateModal, openEditModal } from './ui/modal';
+import { performAddModal, performEditModal } from './ui/modal';
 import { findDatesInString } from './utills/findDatesInString';
 import { countNotesByCategory } from './utills/countNotesCategories';
 
@@ -9,20 +15,31 @@ const updateUI = () => {
 		notes.map((note) => ({ ...note, dates: findDatesInString(note.content) }))
 	);
 
-	let summary = countNotesByCategory(notes);
-	renderSummary(summary);
+	renderSummary(countNotesByCategory(notes));
 };
 
 const editHandler = (id) => {
-	let editedNote = notes.find((note) => note.id === id);
-	openEditModal(editedNote, (editedNoteData) => {
-		console.log(editedNoteData);
+	let selectedNote = notes.find((note) => note.id === id);
+	performEditModal(selectedNote, (editedNoteData) => {
+		let editedNote = { ...selectedNote, ...editedNoteData };
+		updateNote(editedNote);
+		updateUI();
 	});
 };
 
 const addHandler = () => {
-	openCreateModal((newNoteData) => {
+	performAddModal((newNoteData) => {
 		console.log(newNoteData);
+		let created = new Intl.DateTimeFormat('en-US').format(new Date());
+		const { name, content, category } = newNoteData;
+		let newNote = {
+			...newNoteData,
+			created,
+			archived: false,
+			id: (notes.at(-1)?.id || 0) + 1,
+		};
+		addNote(newNote);
+		updateUI();
 	});
 };
 
